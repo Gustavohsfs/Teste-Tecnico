@@ -1,5 +1,4 @@
 import React from "react";
-import DataGridDemo from "./grid/grid";
 import Home from "./paginas/Home";
 
 function App() {

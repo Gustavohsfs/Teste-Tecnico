@@ -12,22 +12,6 @@ const Vagas = () => {
     })();
   }, []);
 
-  const labels = dados.map((label) => label.labels);
-
-//IMPORTANTE
-  //const nomes = labels.map((nome) => nome.map((nm) => nm.name));
-
-  
-//dá certo
-/*
-  const nomes = labels.map((nome) => {
-    return {
-      id: nome.map((nm) => nm.id),
-      nomes: nome.map((nm) => nm.name ),
-    }
-  });
-*/
-
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -47,44 +31,22 @@ const Vagas = () => {
       headerName: "Labels",
       width: 500,
       height: 800,
-      //valueGetter: ({ value }) =>  {for(var i = 0; i<nomes.length ; i++){ value = nomes[i]; return value}} ,
       editable: false,
     },
   ];
 
   const rows = dados.map((nome) => {
-    
-  
     return {
       id: nome.id,
       link: nome.html_url,
       titulo: nome.title,
-      nomes: nome.labels.map((nomear) => nomear.name)
+      nomes: nome.labels.map((nomear) => nomear.name),
     };
   });
 
-  /*
-  const rows = dados.map((nome) => {
-    const nomear = labels.map((e) => e.map((nm) => nm.name));
-
-    return {
-      id: nome.id,
-      link: nome.html_url,
-      titulo: nome.title,
-      nomes: nomear
-    };
-  });
-  */
-
-  //const rows = dados;
-
-  //const rows1  = dados.map((titulo) => titulo.title)
-  //const dadosFiltrados = rows1.filter((dado) => dado.toLowerCase().includes(busca.toLowerCase()))
   const dadosFiltrados = rows.filter((dado) =>
     JSON.stringify(dado).toLowerCase().includes(busca.toLowerCase())
   );
-
-  //console.log(dadosFiltrados);
 
   return (
     <>
@@ -110,15 +72,3 @@ const Vagas = () => {
 };
 
 export default Vagas;
-
-/*
-<>
- <Container className="container-grid" maxWidth="lg">
-        <ul>
-          {dados.map((vaga) => (
-            <li key={vaga.id}>{vaga.title}</li>
-          ))}
-        </ul>
-      </Container>
-</>
-*/

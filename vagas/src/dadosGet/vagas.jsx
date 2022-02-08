@@ -1,46 +1,10 @@
-import { Container } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { apiVagas, apiVagasPage } from "../api/api";
+import { apiVagasPage } from "../api/api";
 import { DataGrid } from "@mui/x-data-grid";
 
 const Vagas = () => {
-  
-  const columns = [
-    { field: "id", headerName: "ID", width: 90 },
-    {
-      field: "title",
-      headerName: "Vaga",
-      width: 600,
-      editable: true,
-    },
-    {
-      field: "html_url",
-      headerName: "Link da Página",
-      width: 330,
-      editable: false,
-    },
-    {
-      field: "labels",
-      headerName: "Labels",
-      width: 500,
-      height: 800,
-      editable: false,
-    },
-    {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-    },
-  ];
-
   const [busca, setBusca] = useState("");
   const [dados, setDados] = useState([]);
- 
-
   useEffect(() => {
     (async () => {
       const response = await apiVagasPage();
@@ -48,9 +12,72 @@ const Vagas = () => {
     })();
   }, []);
 
-  const labels  = dados.map((label) => (label.labels))
-  console.log(labels)
-  const rows = dados;
+  const labels = dados.map((label) => label.labels);
+
+//IMPORTANTE
+  //const nomes = labels.map((nome) => nome.map((nm) => nm.name));
+
+  
+//dá certo
+/*
+  const nomes = labels.map((nome) => {
+    return {
+      id: nome.map((nm) => nm.id),
+      nomes: nome.map((nm) => nm.name ),
+    }
+  });
+*/
+
+  const columns = [
+    { field: "id", headerName: "ID", width: 90 },
+    {
+      field: "titulo",
+      headerName: "Vaga",
+      width: 540,
+      editable: true,
+    },
+    {
+      field: "link",
+      headerName: "Link da Página",
+      width: 330,
+      editable: false,
+    },
+    {
+      field: "nomes",
+      headerName: "Labels",
+      width: 500,
+      height: 800,
+      //valueGetter: ({ value }) =>  {for(var i = 0; i<nomes.length ; i++){ value = nomes[i]; return value}} ,
+      editable: false,
+    },
+  ];
+
+  const rows = dados.map((nome) => {
+    
+  
+    return {
+      id: nome.id,
+      link: nome.html_url,
+      titulo: nome.title,
+      nomes: nome.labels.map((nomear) => nomear.name)
+    };
+  });
+
+  /*
+  const rows = dados.map((nome) => {
+    const nomear = labels.map((e) => e.map((nm) => nm.name));
+
+    return {
+      id: nome.id,
+      link: nome.html_url,
+      titulo: nome.title,
+      nomes: nomear
+    };
+  });
+  */
+
+  //const rows = dados;
+
   //const rows1  = dados.map((titulo) => titulo.title)
   //const dadosFiltrados = rows1.filter((dado) => dado.toLowerCase().includes(busca.toLowerCase()))
   const dadosFiltrados = rows.filter((dado) =>
@@ -75,6 +102,7 @@ const Vagas = () => {
           pageSize={10}
           rowsPerPageOptions={[10]}
           disableSelectionOnClick
+          rowHeight={50}
         />
       </div>
     </>

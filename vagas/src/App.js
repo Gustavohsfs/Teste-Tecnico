@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./paginas/Home";
+import Rotas from "./Rotas/rotas";
 
 function App() {
   return (
     <>
-      <Home />
+      <Rotas />
     </>
   );
 }

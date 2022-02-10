@@ -1,11 +1,17 @@
+import { Button } from "@mui/material";
 import React from "react";
-import Vagas from "../dadosGet/vagas";
+import { Link } from "react-router-dom";
+
 
 const Home = () => {
   return (
   <>
-  <p>Bem vindo ao Home</p>
-  <Vagas />
+  <Link to="/front">
+  <Button>Vagas Front-End</Button>
+  </Link>
+  <Link to="/back">
+  <Button>Vagas Back-End</Button>
+  </Link>
   </>
   );
 };

@@ -74,7 +74,7 @@ const VagasFront = () => {
             fullWidth
           />
         </Container>
-      <div style={{ height: 700, width: "100%" }}>
+      <div style={{ height: 650, width: "100%" }}>
         
         <DataGrid
           rows={dadosFiltrados}

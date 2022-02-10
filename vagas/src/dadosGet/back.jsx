@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { apiServerPage, apiVagasPage } from "../api/api";
+import { apiServerBack, apiVagasBack } from "../api/api";
 import { DataGrid } from "@mui/x-data-grid";
 import { Container, TextField, Typography } from "@mui/material";
 
@@ -11,10 +11,10 @@ const VagasBack = () => {
     (async () => {
       if (busca.length > 0) {
         setSearch(busca);
-        const response = await apiServerPage(search);
+        const response = await apiServerBack(search);
         setDados(response.data);
       } else {
-        const response = await apiVagasPage();
+        const response = await apiVagasBack();
         setDados(response.data);
       }
     })();
@@ -63,19 +63,20 @@ const VagasBack = () => {
 
   return (
     <>
-    <Container maxWidth='sm'>
-      <Typography align="center" variant="h3" component="h1" mt={1}>Vagas Back-End</Typography>
-          <TextField
-            id="filtro"
-            label="Pesquise sua vaga"
-            variant="outlined"
-            type="text"
-            onKeyUp={handleEventInput}
-            fullWidth
-          />
-        </Container>
-      <div style={{ height: 700, width: "100%" }}>
-        
+      <Container maxWidth="sm">
+        <Typography align="center" variant="h3" component="h1" mt={1}>
+          Vagas Back-End
+        </Typography>
+        <TextField
+          id="filtro"
+          label="Pesquise sua vaga"
+          variant="outlined"
+          type="text"
+          onKeyUp={handleEventInput}
+          fullWidth
+        />
+      </Container>
+      <div style={{ height: 650, width: "100%" }}>
         <DataGrid
           rows={dadosFiltrados}
           columns={columns}

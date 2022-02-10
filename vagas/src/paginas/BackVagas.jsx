@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import VagasBack from "../dadosGet/vagas";
+import VagasBack from "../dadosGet/back";
 
 const BackPage = () => {
   return (

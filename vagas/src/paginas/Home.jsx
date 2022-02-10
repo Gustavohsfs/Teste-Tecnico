@@ -19,9 +19,8 @@ const Home = () => {
         <section className="tela">
           <Container maxWidth="lg">
             <h1 className="TituloTopo">
-              <img className="imagem" src={github} width="50" alt="github" />{" "}
-              Procurando Vagas Programador? <br></br> Selecione sua
-              especialidade
+              <img className="imagem" src={github} width="50" alt="github" />
+              Procurando Vagas, Programador? <br /> Selecione sua especialidade
             </h1>
             <div className="grid">
               <div className="box1">
@@ -35,10 +34,9 @@ const Home = () => {
                   Front-End
                 </Typography>
                 <p>
-                  Você é Programador Front-End? <br></br>
-                  &nbsp;Está procurando uma vaga de emprego, consulte aqui as
-                  melhores oportunidades no GitHub e garanta seu espaço no mundo
-                  da programação!
+                  Você é Programador Front-End? <br />
+                  &nbsp;Consulte aqui as melhores oportunidades no GitHub e
+                  garanta seu espaço no mundo da programação, acesse!
                 </p>
                 <div className="button">
                   <Link to="/front">
@@ -48,19 +46,19 @@ const Home = () => {
                   </Link>
                 </div>
                 <div className="imagens">
-                  <img
-                    className="imagem"
-                    src={angular}
-                    width="90"
-                    alt="angular"
-                  />
-                  <img className="imagem" src={html5} width="60" alt="html5" />
                   <img className="imagem" src={react} width="75" alt="react" />
+                  <img className="imagem" src={html5} width="60" alt="html5" />
                   <img
                     className="imagem"
                     src={javascript}
                     width="40"
                     alt="javascript"
+                  />
+                  <img
+                    className="imagem"
+                    src={angular}
+                    width="80"
+                    alt="angular"
                   />
                 </div>
               </div>
@@ -75,10 +73,9 @@ const Home = () => {
                   Back-End
                 </Typography>
                 <p>
-                  Programadores Back-End <br></br>
-                  &nbsp;As vagas de emprego do GitHub lhe aguardam, garanta já
-                  uma oportunidade em grandes empresas do mundo da Tecnologia,
-                  acesse!
+                  Você é Programador Back-End? <br />
+                  &nbsp;Consulte aqui as melhores oportunidades no GitHub e
+                  garanta seu espaço no mundo da programação, acesse!
                 </p>
                 <div className="button">
                   <Link to="/back">

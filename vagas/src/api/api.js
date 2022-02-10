@@ -4,11 +4,11 @@ export const api = axios.create({
   baseURL: "https://api.github.com/repos",
 });
 
-export const apiVagasPage = async () => {
+export const apiVagasBack = async () => {
   return api.get("/backend-br/vagas/issues?per_page=100");
 };
 
-export const apiServerPage = async (search) => {
+export const apiServerBack = async (search) => {
   
   return api.get(`/backend-br/vagas/issues?per_page=100&q=${search}`);
 };

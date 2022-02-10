@@ -35,7 +35,7 @@ const Home = () => {
                 </Typography>
                 <p>
                   Você é Programador Front-End? <br />
-                  &nbsp;Consulte aqui as melhores oportunidades no GitHub e
+                  Consulte aqui as melhores oportunidades no GitHub e
                   garanta seu espaço no mundo da programação, acesse!
                 </p>
                 <div className="button">
@@ -74,7 +74,7 @@ const Home = () => {
                 </Typography>
                 <p>
                   Você é Programador Back-End? <br />
-                  &nbsp;Consulte aqui as melhores oportunidades no GitHub e
+                  Consulte aqui as melhores oportunidades no GitHub e
                   garanta seu espaço no mundo da programação, acesse!
                 </p>
                 <div className="button">

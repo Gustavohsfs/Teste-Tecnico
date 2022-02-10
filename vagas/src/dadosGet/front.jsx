@@ -64,7 +64,7 @@ const VagasFront = () => {
   return (
     <>
     <Container maxWidth='sm'>
-      <Typography align="center" variant="h2" component="h1" mt={2}>Vagas Front-End</Typography>
+      <Typography align="center" variant="h3" component="h1" mt={1}>Vagas Front-End</Typography>
           <TextField
             id="filtro"
             label="Pesquise sua vaga"

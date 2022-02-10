@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { apiVagasPage } from "../api/api";
+import { apiServerPage, apiVagasPage } from "../api/api";
 import { DataGrid } from "@mui/x-data-grid";
 
 const Vagas = () => {
   const [busca, setBusca] = useState("");
   const [dados, setDados] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     (async () => {
-      const response = await apiVagasPage();
-      setDados(response.data);
+      if (busca.length > 0) {
+        setSearch(busca);
+        const response = await apiServerPage(search);
+        setDados(response.data);
+      } else {
+        const response = await apiVagasPage();
+        setDados(response.data);
+      }
     })();
-  }, []);
+  }, [search, busca]);
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
@@ -18,7 +25,7 @@ const Vagas = () => {
       field: "titulo",
       headerName: "Vaga",
       width: 540,
-      editable: true,
+      editable: false,
     },
     {
       field: "link",
@@ -29,8 +36,7 @@ const Vagas = () => {
     {
       field: "nomes",
       headerName: "Labels",
-      width: 500,
-      height: 800,
+      width: 700,
       editable: false,
     },
   ];
@@ -48,16 +54,17 @@ const Vagas = () => {
     JSON.stringify(dado).toLowerCase().includes(busca.toLowerCase())
   );
 
+  function handleEventInput(event) {
+    if (event.key === "Enter") {
+      setBusca(event.target.value);
+    }
+  }
+
   return (
     <>
       <div style={{ height: 700, width: "100%" }}>
-        <input
-          type="text"
-          value={busca}
-          onChange={(event) => {
-            setBusca(event.target.value);
-          }}
-        />
+        <input type="text" onKeyUp={handleEventInput} />
+
         <DataGrid
           rows={dadosFiltrados}
           columns={columns}

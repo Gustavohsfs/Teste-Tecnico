@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { apiServerPage, apiVagasPage } from "../api/api";
+import { apiServerFront, apiVagasFront } from "../api/api";
 import { DataGrid } from "@mui/x-data-grid";
 import { Container, TextField, Typography } from "@mui/material";
 
-const VagasBack = () => {
+const VagasFront = () => {
   const [busca, setBusca] = useState("");
   const [dados, setDados] = useState([]);
   const [search, setSearch] = useState("");
@@ -11,10 +11,10 @@ const VagasBack = () => {
     (async () => {
       if (busca.length > 0) {
         setSearch(busca);
-        const response = await apiServerPage(search);
+        const response = await apiServerFront(search);
         setDados(response.data);
       } else {
-        const response = await apiVagasPage();
+        const response = await apiVagasFront();
         setDados(response.data);
       }
     })();
@@ -64,7 +64,7 @@ const VagasBack = () => {
   return (
     <>
     <Container maxWidth='sm'>
-      <Typography align="center" variant="h2" component="h1" mt={2}>Vagas Back-End</Typography>
+      <Typography align="center" variant="h2" component="h1" mt={2}>Vagas Front-End</Typography>
           <TextField
             id="filtro"
             label="Pesquise sua vaga"
@@ -99,4 +99,4 @@ const VagasBack = () => {
   );
 };
 
-export default VagasBack;
+export default VagasFront;

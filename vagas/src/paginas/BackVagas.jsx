@@ -7,7 +7,7 @@ const BackPage = () => {
   return (
     <>
     <Link to="/">
-    <Button>Home</Button>
+    <Button variant="contained" color="primary">Home</Button>
     </Link>
       <VagasBack />
     </>
